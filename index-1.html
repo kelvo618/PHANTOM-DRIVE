@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#101820">
+  <title>PHANTOM DRIVE — Open World</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loading" class="overlay">
+    <div class="loading-card">
+      <div class="brand-mark">PD</div>
+      <p class="eyebrow">OPEN-WORLD DRIVING CAREER</p>
+      <h1>PHANTOM <span>DRIVE</span></h1>
+      <p id="loading-message">Building your world...</p>
+      <div class="loading-track"><span id="loading-bar"></span></div>
+    </div>
+  </div>
+
+  <div id="game-root">
+    <canvas id="game-canvas" aria-label="3D driving game"></canvas>
+
+    <header class="topbar">
+      <div class="brand"><span class="brand-icon">PD</span><div><strong>PHANTOM DRIVE</strong><small>OPEN WORLD</small></div></div>
+      <div class="top-stats">
+        <div><small>CASH</small><strong id="cash">$1,250</strong></div>
+        <div><small>CAREER</small><strong id="career-level">BEGINNER</strong></div>
+      </div>
+      <button id="pause-btn" class="icon-btn" aria-label="Pause game">Ⅱ</button>
+    </header>
+
+    <section class="mission-card">
+      <div class="mission-tag">AVAILABLE JOB</div>
+      <h2 id="mission-title">First Delivery</h2>
+      <p id="mission-description">Drive to the glowing checkpoint to complete your first job.</p>
+      <div class="mission-footer"><span id="mission-distance">DISTANCE --</span><span id="mission-reward">REWARD $350</span></div>
+    </section>
+
+    <div class="speed-panel">
+      <div class="speed-reading"><strong id="speed">0</strong><span>KM/H</span></div>
+      <div class="speed-bottom"><span id="gear">D</span><span id="car-label">PHANTOM SEDAN</span></div>
+      <div class="speed-meter"><span id="speed-fill"></span></div>
+    </div>
+
+    <div class="world-label"><span class="live-dot"></span><span id="district">DOWNTOWN DISTRICT</span><span id="clock">08:30</span></div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <div class="mobile-controls" id="mobile-controls">
+      <div class="steering-controls">
+        <button class="control-btn steering" data-control="left" aria-label="Steer left">◀</button>
+        <button class="control-btn steering" data-control="right" aria-label="Steer right">▶</button>
+      </div>
+      <div class="utility-controls">
+        <button class="control-btn utility" data-control="handbrake">HANDBRAKE</button>
+        <button class="control-btn utility" id="camera-btn">CAMERA</button>
+      </div>
+      <div class="pedal-controls">
+        <button class="control-btn brake" data-control="brake">BRAKE<br><small>REVERSE</small></button>
+        <button class="control-btn accelerator" data-control="accelerate">ACCELERATE</button>
+      </div>
+    </div>
+
+    <div class="desktop-hint">W / ↑ ACCELERATE <b>•</b> S / ↓ BRAKE <b>•</b> A D / ← → STEER <b>•</b> SPACE HANDBRAKE <b>•</b> C CAMERA</div>
+
+    <div id="pause-menu" class="menu-overlay hidden">
+      <div class="menu-card">
+        <p class="eyebrow">TAKE A BREATHER</p><h2>PAUSED</h2>
+        <p>Your career progress is saved on this device.</p>
+        <button id="resume-btn" class="primary-btn">RESUME DRIVING</button>
+        <button id="reset-btn" class="secondary-btn">RESET CAREER</button>
+        <p class="tiny-note">Resetting clears your saved cash and career progress.</p>
+      </div>
+    </div>
+
+    <div id="intro-panel" class="menu-overlay">
+      <div class="menu-card intro-card">
+        <p class="eyebrow">YOUR STORY STARTS HERE</p>
+        <h2>THE CITY IS YOURS.</h2>
+        <p>Take the wheel, explore the city and reach the gold checkpoint to complete your first delivery. Earn cash and build your driving career.</p>
+        <div class="intro-facts"><span>01 <small>OPEN WORLD</small></span><span>02 <small>CAREER JOBS</small></span><span>03 <small>FREE DRIVE</small></span></div>
+        <button id="start-btn" class="primary-btn">START ENGINE</button>
+        <p class="tiny-note">Lightweight browser prototype · Best with landscape orientation</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
