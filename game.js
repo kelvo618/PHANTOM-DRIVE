@@ -102,6 +102,16 @@
         addRoadMark(off,p,.18,world.roadWidth*.62,0,0xf0f0e0);
       }
     }
+    // Roadside sidewalks and block lots: light concrete strips beside each street.
+    const sidewalkMat=material(0xaaa9a0,1);
+    for(let p=-420;p<=420;p+=world.block){
+      for(const side of [-1,1]){
+        const verticalSidewalk=new THREE.Mesh(new THREE.PlaneGeometry(3,900),sidewalkMat);
+        verticalSidewalk.rotation.x=-Math.PI/2; verticalSidewalk.position.set(p+side*(world.roadWidth/2+1.5),.015,0); roadGroup.add(verticalSidewalk);
+        const horizontalSidewalk=new THREE.Mesh(new THREE.PlaneGeometry(900,3),sidewalkMat);
+        horizontalSidewalk.rotation.x=-Math.PI/2; horizontalSidewalk.position.set(0,.015,p+side*(world.roadWidth/2+1.5)); roadGroup.add(horizontalSidewalk);
+      }
+    }
     // Roadside sidewalks and block lots.
     const buildingMats=[0xb7b7ae,0x9caab0,0xc4b9a4,0x858f95,0xd0c8b8,0x6f7c83].map(c=>material(c));
     const windowMat=material(0x42616f,.35,.25), roofMat=material(0x646b6e);
@@ -125,6 +135,15 @@
             }
           }
           b.position.set(bx,0,bz); scene.add(b); buildings.push(b);
+        }
+        // Streetlights at selected corners.
+        if(Math.random()>.7){
+          const lx=cx+(Math.random()-.5)*26, lz=cz+(Math.random()-.5)*22;
+          const pole=new THREE.Mesh(new THREE.CylinderGeometry(.07,.11,5.2,6),material(0x4b5155));
+          pole.position.set(lx,2.6,lz); scene.add(pole);
+          box(scene,1.2,.08,.08,lx+.5,5.1,lz,material(0x4b5155));
+          const lamp=new THREE.Mesh(new THREE.BoxGeometry(.45,.12,.28),new THREE.MeshStandardMaterial({color:0xffe6a8,emissive:0x33220b}));
+          lamp.position.set(lx+1,5.05,lz); scene.add(lamp);
         }
         // Small roadside trees.
         if(Math.random()>.42){
@@ -247,7 +266,7 @@
     state.speed=THREE.MathUtils.clamp(state.speed,-7,42);
     const steer=(left?-1:0)+(right?1:0);
     const speedFactor=Math.min(1,Math.abs(state.speed)/8);
-    state.heading+=steer*1.35*speedFactor*dt*(state.speed>=0?1:-1);
+    state.heading-=steer*1.35*speedFactor*dt*(state.speed>=0?1:-1);
     const forwardX=Math.sin(state.heading), forwardZ=Math.cos(state.heading);
     car.position.x+=forwardX*state.speed*dt;
     car.position.z+=forwardZ*state.speed*dt;

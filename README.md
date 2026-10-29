@@ -32,11 +32,11 @@ Use the on-screen steering, accelerator, brake and handbrake controls. The camer
 - Lightweight 3D city grid and surrounding roads
 - Player car with third-person, cockpit and hood camera modes
 - Keyboard and touch controls
-- Basic acceleration, braking, reverse, steering and handbrake behaviour
+- Basic acceleration, braking, reverse, corrected left/right steering and handbrake behaviour
 - Moving traffic vehicles
 - Starter delivery checkpoint and repeatable cash rewards
 - Cash and first-job progress saved in browser local storage
-- Simple day/night tint cycle and career HUD
+- Simple day/night tint cycle, sidewalks, streetlights and career HUD
 
 ## Prototype limitations
 This is the first playable foundation, not a finished commercial simulator. The current city uses generated low-poly buildings; traffic AI and vehicle physics are intentionally simple. Advanced collision physics, proper road-following traffic, detailed assets, audio, real fuel/repair systems, and broader career missions can be added in later versions. Three.js and optional Google Fonts require an internet connection in this starter version.
